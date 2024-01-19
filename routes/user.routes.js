@@ -22,7 +22,7 @@ userRouter.post("/signup", checkUser, (req, res) => {
   const { name, email, password, roles } = req.body;
   bcrypt.hash(password, 10, async function (err, hash) {
     if (err) {
-      res.status(400).send("bad request");
+     return res.status(400).send("bad request");
     }
     try {
       await UserModel.create({ name, email, password: hash, roles });
